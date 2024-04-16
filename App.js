@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from "react";
+import { StyleSheet } from "react-native";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { Composant1 } from "./components/Composant1/Composant1";
 
 export default function App() {
+  const [books, setBooks] = useState([
+    { id: 1, title: "Le seigneur des anneaux", price: 9.8 },
+    { id: 2, title: "Harry potter", price: 9.8 },
+    { id: 3, title: "Le petit prince", price: 9.8 },
+  ]);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaView style={s.main}>
+        <Composant1 books={books} />
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
+const s = StyleSheet.create({
+  main: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
