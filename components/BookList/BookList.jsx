@@ -1,5 +1,9 @@
 import { Text } from "react-native"
-export function BookList({books}) {
+import { useContext } from "react"
+import { BookContext} from '../../Contexts/BookContext'
+
+export function BookList() {
+    const {books} = useContext(BookContext)
     return (
         <>
         {books.map((book) => (
